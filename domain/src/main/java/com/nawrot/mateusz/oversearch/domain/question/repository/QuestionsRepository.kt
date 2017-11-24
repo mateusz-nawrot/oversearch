@@ -6,6 +6,6 @@ import io.reactivex.Observable
 
 interface QuestionsRepository {
 
-    fun getQuestions(query: String): Observable<List<Question>>
+    fun getQuestions(query: String, order: String = "desc", sort: String = "relevance"): Observable<List<Question>>
 
 }

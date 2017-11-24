@@ -13,9 +13,9 @@ import javax.inject.Named
 class StackQuestionsRepository @Inject constructor(private val retrofit: Retrofit,
                                                    @Named private val apiKey: String) : QuestionsRepository {
 
-    override fun getQuestions(query: String): Observable<List<Question>> {
+    override fun getQuestions(query: String, order: String, sort: String): Observable<List<Question>> {
         return retrofit.create(QuestionsApi::class.java)
-                .getQuestions("desc", "relevance", query, apiKey)
+                .getQuestions(order, sort, query, apiKey)
                 .map {
                     mapResponse(it)
                 }
