@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">oversearch</string>
+    <string name="action_settings">Settings</string>
+    <string name="splash_screen_title">oversearch</string>
+
+    <string name="base_url">https://api.stackexchange.com/2.2/</string>
+    <string name="stack_client_key">MlFJMAPJcJSpO2GaKkcFrQ((</string>
+</resources>
