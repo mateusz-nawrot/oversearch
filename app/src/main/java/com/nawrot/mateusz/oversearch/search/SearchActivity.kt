@@ -5,10 +5,7 @@ import android.util.Log
 import android.view.inputmethod.EditorInfo
 import com.jakewharton.rxbinding2.widget.editorActions
 import com.nawrot.mateusz.oversearch.R
-import com.nawrot.mateusz.oversearch.base.BaseActivity
-import com.nawrot.mateusz.oversearch.base.addToCompositeDisposable
-import com.nawrot.mateusz.oversearch.base.hideKeyboard
-import com.nawrot.mateusz.oversearch.base.showSnackbar
+import com.nawrot.mateusz.oversearch.base.*
 import com.nawrot.mateusz.oversearch.domain.question.model.Question
 import com.nawrot.mateusz.oversearch.search.question.QuestionRowInterface
 import com.nawrot.mateusz.oversearch.search.question.QuestionsAdapter
@@ -47,6 +44,7 @@ class SearchActivity : BaseActivity(), SearchView, QuestionRowInterface {
     override fun onStart() {
         super.onStart()
         presenter.attachView(this)
+        presenter.search()
     }
 
     override fun onStop() {
@@ -71,6 +69,10 @@ class SearchActivity : BaseActivity(), SearchView, QuestionRowInterface {
     override fun showResults(questions: List<Question>) {
         questionsRecyclerView.scheduleLayoutAnimation()
         questionsAdapter.swapData(questions)
+    }
+
+    override fun setProgressVisible(visible: Boolean) {
+        loadingProgress.changeVisibility(visible)
     }
 
     override fun onQuestionClick(question: Question) {

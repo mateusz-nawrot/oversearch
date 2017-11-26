@@ -11,4 +11,6 @@ interface SearchView : BaseView {
     fun showError(error: Throwable)
 
     fun showResults(questions: List<Question>)
+
+    fun setProgressVisible(visible: Boolean)
 }

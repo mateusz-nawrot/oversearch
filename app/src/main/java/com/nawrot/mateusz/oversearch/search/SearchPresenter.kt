@@ -11,10 +11,13 @@ class SearchPresenter @Inject constructor(private val getQuestionsUseCase: GetQu
     fun search() {
         val query: String = view?.getQuery() ?: ""
 
-        getQuestionsUseCase.execute(query).subscribe(
-                { results -> view?.showResults(results) },
-                { view?.showError(it) }
-        ).addToCompositeDisposable(compositeDisposable)
+        getQuestionsUseCase.execute(query)
+                .doOnSubscribe { view?.setProgressVisible(true) }
+                .doOnTerminate { view?.setProgressVisible(false) }
+                .subscribe(
+                        { results -> view?.showResults(results) },
+                        { view?.showError(it) }
+                ).addToCompositeDisposable(compositeDisposable)
     }
 
 }

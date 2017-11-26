@@ -25,3 +25,7 @@ fun View.showSnackbar(message: String, length: Int = Snackbar.LENGTH_LONG, actio
 
     snack.show()
 }
+
+fun View.changeVisibility(visible: Boolean) {
+    visibility = if (visible) View.VISIBLE else View.GONE
+}
