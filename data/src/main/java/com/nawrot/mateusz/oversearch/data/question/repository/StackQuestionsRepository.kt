@@ -11,7 +11,7 @@ import javax.inject.Named
 
 
 class StackQuestionsRepository @Inject constructor(private val retrofit: Retrofit,
-                                                   @Named private val apiKey: String) : QuestionsRepository {
+                                                   @Named("key") private val apiKey: String) : QuestionsRepository {
 
     override fun getQuestions(query: String, order: String, sort: String): Observable<List<Question>> {
         return retrofit.create(QuestionsApi::class.java)
@@ -22,7 +22,9 @@ class StackQuestionsRepository @Inject constructor(private val retrofit: Retrofi
     }
 
     private fun mapResponse(response: GetQuestionsResponse): List<Question> {
-        return arrayListOf()
+        return response.questions.map { dto ->
+            Question(dto.questionId, dto.title, dto.owner?.displayName, dto.score, dto.creationDate, dto.tags, dto.acceptedAnswerId)
+        }
     }
 
 }

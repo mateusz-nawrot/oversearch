@@ -39,7 +39,7 @@ data class QuestionDto(
         val creationDate: Long,
 
         @Json(name = "last_edit_date")
-        val lastEditDate: Long,
+        val lastEditDate: Long?,
 
         @Json(name = "link")
         val link: String

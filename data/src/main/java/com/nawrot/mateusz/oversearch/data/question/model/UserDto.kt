@@ -15,7 +15,7 @@ data class UserDto(
         val displayName: String?,
 
         @Json(name = "profile_image")
-        val profileImage: String,
+        val profileImage: String?,
 
         @Json(name = "accept_rate")
         val acceptRate: Int?,
