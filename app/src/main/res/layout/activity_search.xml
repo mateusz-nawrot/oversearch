@@ -21,7 +21,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
             app:titleEnabled="false">
 
-            <EditText
+            <com.nawrot.mateusz.oversearch.view.ClearableEditText
                 android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,5 +50,12 @@
         android:layoutAnimation="@anim/layout_animation_fade_in"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <ProgressBar
+        android:id="@+id/loadingProgress"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"/>
 
 </android.support.design.widget.CoordinatorLayout>
