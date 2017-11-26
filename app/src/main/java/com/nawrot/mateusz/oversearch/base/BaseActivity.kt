@@ -1,13 +1,23 @@
 package com.nawrot.mateusz.oversearch.base
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import io.reactivex.disposables.CompositeDisposable
 import kotlin.reflect.KClass
 
 
+@SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
+
+    protected val viewDisposable: CompositeDisposable = CompositeDisposable()
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewDisposable.clear()
+    }
 
     inline fun <reified T : Any> start(activityClass: KClass<T>, flags: Int? = null, finishCurrentActivity: Boolean = false) {
         val intent = Intent(this, activityClass.java)

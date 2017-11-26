@@ -6,7 +6,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 open class BasePresenter<V : BaseView> {
 
-    protected var compositeDisposable = CompositeDisposable()
+    protected val compositeDisposable = CompositeDisposable()
 
     protected var view: V? = null
 
