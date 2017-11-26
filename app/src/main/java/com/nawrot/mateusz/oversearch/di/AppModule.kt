@@ -7,6 +7,8 @@ import com.nawrot.mateusz.oversearch.data.base.AndroidSchedulersProvider
 import com.nawrot.mateusz.oversearch.data.question.repository.StackQuestionsRepository
 import com.nawrot.mateusz.oversearch.domain.base.SchedulersProvider
 import com.nawrot.mateusz.oversearch.domain.question.repository.QuestionsRepository
+import com.squareup.moshi.KotlinJsonAdapterFactory
+import com.squareup.moshi.Moshi
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -65,10 +67,17 @@ abstract class AppModule {
         @JvmStatic
         @Provides
         @Singleton
-        fun retrofit(okHttpClient: OkHttpClient, @Named("baseUrl") baseUrl: String): Retrofit {
+        fun moshi(): Moshi {
+            return Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        }
+
+        @JvmStatic
+        @Provides
+        @Singleton
+        fun retrofit(okHttpClient: OkHttpClient, moshi: Moshi, @Named("baseUrl") baseUrl: String): Retrofit {
             return Retrofit.Builder()
                     .baseUrl(baseUrl)
-                    .addConverterFactory(MoshiConverterFactory.create())
+                    .addConverterFactory(MoshiConverterFactory.create(moshi))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(okHttpClient)
                     .build()
