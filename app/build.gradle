@@ -45,8 +45,4 @@ dependencies {
 
     //rxbindings
     implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rootProject.rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rootProject.rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rootProject.rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rootProject.rxBindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rootProject.rxBindingVersion"
 }
