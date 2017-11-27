@@ -3,12 +3,13 @@ package com.nawrot.mateusz.oversearch.search
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import com.jakewharton.rxbinding2.widget.editorActions
 import com.nawrot.mateusz.oversearch.R
 import com.nawrot.mateusz.oversearch.base.*
 import com.nawrot.mateusz.oversearch.domain.question.model.Question
-import com.nawrot.mateusz.oversearch.search.question.QuestionRowInterface
-import com.nawrot.mateusz.oversearch.search.question.QuestionsAdapter
+import com.nawrot.mateusz.oversearch.question.QuestionRowInterface
+import com.nawrot.mateusz.oversearch.question.QuestionsAdapter
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_search.*
 import javax.inject.Inject
@@ -36,6 +37,7 @@ class SearchActivity : BaseActivity(), SearchView, QuestionRowInterface {
         }.addToCompositeDisposable(viewDisposable)
 
         questionsAdapter = QuestionsAdapter()
+        questionsAdapter.questionRowInterface = this
 
         questionsRecyclerView.adapter = questionsAdapter
 
@@ -76,6 +78,6 @@ class SearchActivity : BaseActivity(), SearchView, QuestionRowInterface {
     }
 
     override fun onQuestionClick(question: Question) {
-
+        Toast.makeText(this, "Question id ${question.id}", Toast.LENGTH_LONG).show()
     }
 }

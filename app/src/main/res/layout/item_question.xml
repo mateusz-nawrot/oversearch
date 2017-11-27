@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_question_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
@@ -11,11 +12,10 @@
 
     <TextView
         android:id="@+id/questionRank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Question.Rank"
         android:layout_marginLeft="16dp"
         android:padding="8dp"
-        android:text="4"/>
+        tools:text="4"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,25 +25,19 @@
 
         <TextView
             android:id="@+id/questionTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
+            style="@style/Question.Title"
             tools:text="Question title"/>
 
         <TextView
             android:id="@+id/questionTags"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Question.Tag"
             android:layout_marginTop="12dp"
-            android:textSize="13sp"
             tools:text="kotlin, android, java, rxjava, retrofit, dagger2"/>
 
         <TextView
             android:id="@+id/questionOwner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Question.Author"
             android:layout_marginTop="8dp"
-            android:textSize="12sp"
             tools:text="created by Mateusz Nawrot"/>
 
     </LinearLayout>

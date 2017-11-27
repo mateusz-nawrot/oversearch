@@ -1,4 +1,4 @@
-package com.nawrot.mateusz.oversearch.search.question
+package com.nawrot.mateusz.oversearch.question
 
 import com.nawrot.mateusz.oversearch.domain.question.model.Question
 

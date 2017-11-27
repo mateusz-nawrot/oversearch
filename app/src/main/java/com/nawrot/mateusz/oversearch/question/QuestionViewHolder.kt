@@ -1,8 +1,9 @@
-package com.nawrot.mateusz.oversearch.search.question
+package com.nawrot.mateusz.oversearch.question
 
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.jakewharton.rxbinding2.view.RxView
 import com.nawrot.mateusz.oversearch.R
 import com.nawrot.mateusz.oversearch.domain.question.model.Question
 import kotlinx.android.synthetic.main.item_question.view.*
@@ -13,6 +14,12 @@ class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var questionRowInterface: QuestionRowInterface? = null
 
     lateinit var question: Question
+
+    init {
+        RxView.clicks(itemView.item_question_root).subscribe {
+            questionRowInterface?.onQuestionClick(question)
+        }
+    }
 
     fun bind(question: Question, questionRowInterface: QuestionRowInterface?) {
         this.question = question

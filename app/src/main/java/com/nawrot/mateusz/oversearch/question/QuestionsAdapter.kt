@@ -1,4 +1,4 @@
-package com.nawrot.mateusz.oversearch.search.question
+package com.nawrot.mateusz.oversearch.question
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
